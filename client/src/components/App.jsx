@@ -68,18 +68,18 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div id='parent-container'>
 
         <DescriptionLink>
-          <div> {this.state.manufacturer} </div>
+          <div id='manufacturer-container'> {this.state.manufacturer} </div>
         </DescriptionLink>
         <Title> 
-          <h1> <span> {this.state.producttitle} </span> </h1> 
+          <h1> <span id='title-container'> {this.state.producttitle} </span> </h1> 
         </Title>
 
 
         <DescriptionText>
-          <div> Price: {(this.state.ourprice).toFixed(2)} </div>
+          <div id='price-container'> Price: {(this.state.ourprice).toFixed(2)} </div>
             <div> 
               <DescriptionLink>FREE Shipping </DescriptionLink>on orders over $25 —or get <DescriptionTextBold>FREE Two-Day Shipping </DescriptionTextBold>with <DescriptionLink>Sequoia Prime</DescriptionLink>
             </div>
@@ -88,9 +88,9 @@ class App extends React.Component {
 
 
         <div> {this.state.stockstatus} </div>
-        <div> {this.state.soldby} </div>
+        <div id='soldby-container'> {this.state.soldby} </div>
         <DescriptionText>
-          <div> {this.state.description} </div>
+          <div id='description-container'> {this.state.description} </div>
         </DescriptionText>
         
         <button onClick={ this.fetchProductDescription } > Clicky </button>
