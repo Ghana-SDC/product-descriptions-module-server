@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders matching the last snapshot 1`] = `
+<div
+  id="parent-container"
+>
+  <span
+    className="sc-bwzfXH kzCHwl"
+  >
+    <div
+      id="manufacturer-container"
+    >
+       
+      
+       
+    </div>
+  </span>
+  <h1
+    className="sc-bdVaJa dtKgia"
+  >
+    <h1>
+       
+      <span
+        id="title-container"
+      >
+         
+        
+         
+      </span>
+       
+    </h1>
+  </h1>
+  <span
+    className="sc-htpNat iSBBUk"
+  >
+    <div
+      id="price-container"
+    >
+       Price: 
+      0.00
+       
+    </div>
+    <div>
+      <span
+        className="sc-bwzfXH kzCHwl"
+      >
+        FREE Shipping 
+      </span>
+      on orders over $25 —or get 
+      <span
+        className="sc-bxivhb bmASPO"
+      >
+        FREE Two-Day Shipping 
+      </span>
+      with 
+      <span
+        className="sc-bwzfXH kzCHwl"
+      >
+        Sequoia Prime
+      </span>
+    </div>
+  </span>
+  <div>
+     
+     
+  </div>
+  <span
+    className="sc-htpNat iSBBUk"
+  >
+    <div
+      id="soldby-container"
+    >
+       Ships from and sold by 
+      
+      . Gift wrap available. 
+    </div>
+    <div
+      id="description-container"
+    >
+       
+      
+       
+    </div>
+  </span>
+  <button
+    onClick={[Function]}
+  >
+     Clicky 
+  </button>
+</div>
+`;

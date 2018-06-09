@@ -3,6 +3,7 @@ import Enzyme from 'enzyme'
 import { shallow, mount, render } from 'enzyme';
 import App from '../App.jsx'
 import Adapter from 'enzyme-adapter-react-16'
+import renderer from 'react-test-renderer';
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -13,23 +14,11 @@ describe('App component', () => {
     expect(shallow(<App />).find('#parent-container').exists()).toBe(true)
   })
 
-  it('should render the title', () => {
-    expect(shallow(<App />).find('#title-container').exists()).toBe(true)
+  it('renders matching the last snapshot', () => {
+    const tree = renderer
+      .create(<App />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 
-  it('should render the manufacturer name', () => {
-    expect(shallow(<App />).find('#manufacturer-container').exists()).toBe(true)
-  })
-
-  it('should render the price', () => {
-    expect(shallow(<App />).find('#price-container').exists()).toBe(true)
-  })
-
-  it('should render the seller', () => {
-    expect(shallow(<App />).find('#soldby-container').exists()).toBe(true)
-  })
-
-  it('should render the description', () => {
-    expect(shallow(<App />).find('#description-container').exists()).toBe(true)
-  })
 })
