@@ -31,8 +31,22 @@ app.get('/api/description/:product', function(req, res) {
     .catch(err => console.log('err in server DB get', err))
 })
 
+app.put('/api/description/:product', function(req, res) {
+  db.ProductDescription.update(
+    {
+      ProductTitle: req.body.producttitle,
+      OurPrice: req.body.ourprice,
+      StockStatus: req.body.stockstatus,
+      Description: req.body.description
+    },
+    {
+      where: { ProductTitle: req.params.product}
+    }
+  )
+})
 
-
+//.update(values, where)
+//"ProductTitle", "Manufacturer", "ListPrice", "OurPrice", "StockStatus", "SoldBy", "Description", "Category
 
 //npm install
 

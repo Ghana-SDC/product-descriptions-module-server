@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
-import {StockStatus, InStock, OutOfStock} from './StockStatus.jsx'
+import {StockStatus, InStock} from './StockStatus.jsx'
 
 const Title = styled.h1`
   font-family: Lato;
@@ -26,6 +26,11 @@ const DescriptionText = styled.span`
 `
 export const DescriptionTextBold = DescriptionText.extend`
   font-weight: bold;
+`
+
+export const OutOfStockText = DescriptionText.extend`
+  font-size: 1.25em;
+  color: orange;
 `
 
 //minimum width of whole component is 250 pixels

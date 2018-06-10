@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
-import {DescriptionTextBold, DescriptionLink} from './App.jsx'
+import {DescriptionTextBold, DescriptionLink, OutOfStockText} from './App.jsx'
 
 export function StockStatus (props) {
   console.log('props in stockstatus', props)
@@ -80,5 +80,5 @@ export function InStock() {
 }
 
 export function OutOfStock() {
-  return 'Temporarily out of stock. Order now and we\'ll deliver when available. We\'ll e-mail you with an estimated delivery date as soon as we have more information. Your account will only be charged when we ship the item.'
+  return <div> <OutOfStockText>Temporarily out of stock.</OutOfStockText> Order now and we\'ll deliver when available. We\'ll e-mail you with an estimated delivery date as soon as we have more information. Your account will only be charged when we ship the item. </div>
 }
