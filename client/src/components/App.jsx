@@ -5,25 +5,58 @@ import styled from 'styled-components'
 
 import {StockStatus, InStock} from './StockStatus.jsx'
 
-const Title = styled.h1`
-  font-family: Lato;
-  font-weight: bold;
-  font-size: 1.0em;
-  text-align: left;
-  color: black;
+const WidthWrapper = styled.div`
+  min-width: 250px;
 `
 
-export const DescriptionLink = styled.span`
+const Title = styled.h1`
   font-family: Lato;
+  text-align: left;
+  font-size: 21px;
+  font-weight: 700;
+  color: black;
+  color: rgb(17, 17, 17);
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+`
+
+const DescriptionText = styled.span`
+  color: #111;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+`
+
+export const DescriptionLink = DescriptionText.extend`
   color: blue;
   &:hover {
     text-decoration: underline;
   }
 `
 
-const DescriptionText = styled.span`
-  font-family: Lato;
+const RedPrice = DescriptionText.extend`
+  color: #B12704;
+  font-size: 17px;
+  line-height: 1.255;
 `
+
+const ShippingDescriptionText = styled.div`
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #111;
+  margin-left: 42px;
+`
+
+export const InStockText = RedPrice.extend`
+  color: #008a00
+`
+
 export const DescriptionTextBold = DescriptionText.extend`
   font-weight: bold;
 `
@@ -32,6 +65,18 @@ export const OutOfStockText = DescriptionText.extend`
   font-size: 1.25em;
   color: orange;
 `
+
+const LineBreak = styled.hr`
+  background-color: transparent;
+  display: block;
+  height: 1px;
+  border-width: 0;
+  border-top: 1px solid #e7e7e7;
+  line-height: 19px;
+  margin-top: 0;
+  margin-bottom: 14px;
+`
+
 
 //minimum width of whole component is 250 pixels
 //does not appear to be a maximum width
@@ -48,7 +93,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: '',
+      id: 0,
       producttitle: '',
       manufacturer: '',
       listprice: 0,
@@ -86,22 +131,23 @@ class App extends React.Component {
 
   render () {
     return (
-      <div id='parent-container'>
+      <WidthWrapper id='parent-container'>
 
         <DescriptionLink>
           <div id='manufacturer-container'> {this.state.manufacturer} </div>
         </DescriptionLink>
         <Title> 
-          <h1> <span id='title-container'> {this.state.producttitle} </span> </h1> 
+          <span id='title-container'> {this.state.producttitle} </span>
         </Title>
+        <LineBreak />
 
 
-        <DescriptionText>
-          <div id='price-container'> Price: {(this.state.ourprice).toFixed(2)} </div>
-            <div> 
-              <DescriptionLink>FREE Shipping </DescriptionLink>on orders over $25 —or get <DescriptionTextBold>FREE Two-Day Shipping </DescriptionTextBold>with <DescriptionLink>Sequoia Prime</DescriptionLink>
+          <div id='price-container'> <DescriptionText> Price: </DescriptionText> <RedPrice> ${(this.state.ourprice).toFixed(2)} </RedPrice> </div>
+            <div>
+              <ShippingDescriptionText>
+                <DescriptionLink>FREE Shipping </DescriptionLink>on orders over $25 —or get <DescriptionTextBold>FREE Two-Day Shipping </DescriptionTextBold>with <DescriptionLink>Sequoia Prime</DescriptionLink>
+              </ShippingDescriptionText>
             </div>
-        </DescriptionText>
 
         <DescriptionText>
           <StockStatus stockStatus={this.state.stockstatus}/>
@@ -115,7 +161,7 @@ class App extends React.Component {
         
         <button onClick={ this.fetchProductDescription } > Clicky </button>
 
-      </div>
+      </WidthWrapper>
     )
   }
 
