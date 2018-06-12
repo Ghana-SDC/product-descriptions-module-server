@@ -3,5 +3,5 @@ import ReactDOM from 'react-dom'
 
 import App from '../src/components/App.jsx'
 
-ReactDOM.render(<App />, document.getElementById('App'))
+ReactDOM.render(<App />, document.getElementById('descriptions'))
 

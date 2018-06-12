@@ -122,15 +122,28 @@ class App extends React.Component {
       category: ''
     }
     this.fetchProductDescription = this.fetchProductDescription.bind(this)
+    this.checkProductInput = this.checkProductInput.bind(this)
   }
 
   componentDidMount() {
-    this.fetchProductDescription('TBD')
+    let testValue = 1
+    this.checkProductInput(testValue)
   }
 
-  fetchProductDescription (product) {
+  checkProductInput(product) {
+    if (typeof product === 'string') {
+      let stringEndPoint = '/api/description/name/'
+      this.fetchProductDescription(stringEndPoint, product)
+    }
+    if (typeof product === 'number') {
+      let numberEndPoint = 'api/description/id/'
+      this.fetchProductDescription(numberEndPoint, product)
+    }
+  }
+
+  fetchProductDescription (endpoint, product) {
     let context = this
-    axios.get('/api/description/Regency%20Edition%20Leather%20Loveseat')
+    axios.get(endpoint + product)
       .then(function (response) {
         console.log('RESPONSE FROM AXIOS GET FRONT END: ', response.data)
         let itemInfo = response.data
@@ -188,13 +201,5 @@ class App extends React.Component {
   }
 
 }
-
-//GET /api/description/:PRODUCTNAME
-//add a PUT route - e.g. if sellers want to update descriptions, not necessary on front end tho
-
-//onComponentDidMount - fetch data
-//axios call to the server
-//server connects to the DB
-
 
 export default App
