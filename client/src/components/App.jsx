@@ -124,6 +124,10 @@ class App extends React.Component {
     this.fetchProductDescription = this.fetchProductDescription.bind(this)
   }
 
+  componentDidMount() {
+    this.fetchProductDescription('TBD')
+  }
+
   fetchProductDescription (product) {
     let context = this
     axios.get('/api/description/Regency%20Edition%20Leather%20Loveseat')
@@ -178,8 +182,6 @@ class App extends React.Component {
           <div id='description-container'> {this.state.description} </div>
         </DescriptionTextBox>
         <LineBreak />
-        
-        <button onClick={ this.fetchProductDescription } > Clicky </button>
 
       </WidthWrapper>
     )
