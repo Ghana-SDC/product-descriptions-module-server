@@ -14,29 +14,31 @@ export function StockStatus (props) {
 }
 
 export function InStock() {
-  let time = new Date(Date.now())
-  let hours = time.getHours()
-  console.log('hours', hours)
-  let minutes = 60 - time.getMinutes()
-
-  if (minutes === 60) {
-    minutes = 0
-    hours = hours + 1
-  }
-
-  let date = new Date();
+  let date = new Date(Date.now());
   let dd = date.getDate() + 2;
   let weekDay = date.getDay() + 2;
   let mm = date.getMonth();
+    //edge case
 
-  if (hours > 12) {
-    hours = hours - 12
+  let hours = date.getHours()
+  console.log('1st hours', hours)
+  let minutes = 60 - date.getMinutes()
+
+  if (minutes === 60) {
+      minutes = 0
+    } else {
+      hours = hours + 1
+    }
+
+  let timeTil;
+
+  if (hours > 14) {
     dd = dd + 1
     weekDay = weekDay + 1
+    timeTil = (-1 * (hours - 24)) + 2 + 12
+  } else {
+    timeTil = 14 - hours
   }
-
-  let timeTil = 13 - hours
-  console.log('timetil', timeTil)
 
   if (weekDay > 6) {
     weekDay = weekDay - 7

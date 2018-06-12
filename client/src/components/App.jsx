@@ -84,6 +84,11 @@ export const OutOfStockText = DescriptionText.extend`
   color: orange;
 `
 
+const PrimeText = DescriptionText.extend`
+  color: rgb(20, 184, 229);
+  font-size: 15px;
+`
+
 const LineBreak = styled.hr`
   background-color: transparent;
   display: block;
@@ -93,6 +98,13 @@ const LineBreak = styled.hr`
   line-height: 19px;
   margin-top: 18;
   margin-bottom: 14px;
+`
+
+const Check = styled.div`
+  color: orange;
+  display: inline;
+  margin: none;
+  font-size; 15px;
 `
 
 class App extends React.Component {
@@ -148,7 +160,7 @@ class App extends React.Component {
         <LineBreak />
 
 
-          <div id='price-container'> <DescriptionText> Price: </DescriptionText> <RedPrice> ${(this.state.ourprice).toFixed(2)} </RedPrice> </div>
+          <div id='price-container'> <DescriptionText> Price: </DescriptionText> <RedPrice> ${(this.state.ourprice).toFixed(2)} </RedPrice> <span>   <Check><i class="fas fa-check"></i></Check></span><PrimeText>prime</PrimeText> </div>
             <div>
               <ShippingDescriptionText>
                 <DescriptionLink>FREE Shipping </DescriptionLink>on orders over $25 —or get <DescriptionTextBold>FREE Two-Day Shipping </DescriptionTextBold>with <DescriptionLink>Sequoia Prime</DescriptionLink>
