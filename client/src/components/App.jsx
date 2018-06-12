@@ -31,6 +31,19 @@ const DescriptionText = styled.span`
   line-height: 19px;
 `
 
+const DescriptionTextBox = styled.div`
+  margin-top: 14px;
+  color: #111;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+`
+
+const MarginTopDescriptionText = DescriptionText.extend`
+  margin-top: 22px;
+`
+
 export const DescriptionLink = DescriptionText.extend`
   color: blue;
   &:hover {
@@ -39,6 +52,7 @@ export const DescriptionLink = DescriptionText.extend`
 `
 
 const RedPrice = DescriptionText.extend`
+  margin-top: 22px;
   color: #B12704;
   font-size: 17px;
   line-height: 1.255;
@@ -50,10 +64,14 @@ const ShippingDescriptionText = styled.div`
   font-weight: 400;
   line-height: 19px;
   color: #111;
-  margin-left: 42px;
+  margin-left: 41px;
 `
 
-export const InStockText = RedPrice.extend`
+export const InStockText = styled.div`
+font-family: Lato;
+font-size: 17px;
+font-weight: 400;
+  margin-top: 14px;
   color: #008a00
 `
 
@@ -73,21 +91,9 @@ const LineBreak = styled.hr`
   border-width: 0;
   border-top: 1px solid #e7e7e7;
   line-height: 19px;
-  margin-top: 0;
+  margin-top: 18;
   margin-bottom: 14px;
 `
-
-
-//minimum width of whole component is 250 pixels
-//does not appear to be a maximum width
-
-//out of stock
-// Temporarily out of stock. 
-// Order now and we'll deliver when available. 
-// We'll e-mail you with an estimated delivery date as
-//  soon as we have more information. Your account will 
-//  only be charged when we ship the item.
-
 
 class App extends React.Component {
   constructor(props) {
@@ -153,11 +159,13 @@ class App extends React.Component {
           <StockStatus stockStatus={this.state.stockstatus}/>
         </DescriptionText>
 
-        <DescriptionText>
+        <MarginTopDescriptionText>
           <div id='soldby-container'> Ships from and sold by {this.state.soldby}. Gift wrap available. </div>
-
+        </MarginTopDescriptionText>
+        <DescriptionTextBox>
           <div id='description-container'> {this.state.description} </div>
-        </DescriptionText>
+        </DescriptionTextBox>
+        <LineBreak />
         
         <button onClick={ this.fetchProductDescription } > Clicky </button>
 
