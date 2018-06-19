@@ -2,3 +2,5 @@ node_modules
 bundle.js
 seedMasterProductsList.sql
 seedDescriptions.sql
+awskey
+mainuser-key-pair-uswest.pem

@@ -132,7 +132,7 @@ class App extends React.Component {
 
   checkProductInput(product) {
     if (typeof product === 'string') {
-      let stringEndPoint = '/api/description/name/'
+      let stringEndPoint = 'api/description/name/'
       this.fetchProductDescription(stringEndPoint, product)
     }
     if (typeof product === 'number') {
@@ -142,10 +142,17 @@ class App extends React.Component {
   }
 
   fetchProductDescription (endpoint, product) {
+    console.log('w/ new')
     let context = this
-    axios.get(endpoint + product)
+    console.log('outside axios')
+    axios.get('http://ec2-13-57-253-90.us-west-1.compute.amazonaws.com:2112/' + endpoint + product)
       .then(function (response) {
         console.log('RESPONSE FROM AXIOS GET FRONT END: ', response.data)
+
+        if (!response.data.ProductTitle) {
+          console.log('Returned no products')
+        }
+
         let itemInfo = response.data
         context.setState({
           id: itemInfo.id,
