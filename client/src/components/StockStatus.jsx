@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import {DescriptionTextBold, DescriptionLink, OutOfStockText, InStockText} from './App.jsx'
 
 export function StockStatus (props) {
-  console.log('props in stockstatus', props)
   if (props.stockStatus === true) {
     return <InStock />
   } else {

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "test": "jest",
-    "build": "webpack -w"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -21,11 +21,12 @@
   "homepage": "https://github.com/kmmcc/product-description-FEC#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-loader": "^7.1.4",
     "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
     "nodemon": "^1.17.5",

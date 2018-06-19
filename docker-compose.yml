@@ -1,0 +1,26 @@
+dversion: "3"
+services:
+  descriptions:
+    image: kmmcc/product-descriptions:latest
+    ports:
+      - 2112:2112
+    links:
+      - db:db
+    command:
+      bash -c 'npm start && npm run build'
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:guest@db:5432/descriptions
+  db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=guest
+      - POSTGRES_DB=descriptions
+volumes:
+  pgdata:

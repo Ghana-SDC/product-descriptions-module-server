@@ -1,6 +1,6 @@
 FROM node:8.11
 
-WORKDIR /Users/kylemccarty/Desktop/gitTest
+WORKDIR /Users/kylemccarty/Desktop/gitTest/product-descriptions-FEC
 
 COPY package*.json ./
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 2112
 
-CMD ["npm", "run build", "start"]
+CMD [ "npm", "start", "run build" ]
