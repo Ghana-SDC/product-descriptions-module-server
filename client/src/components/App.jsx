@@ -145,7 +145,7 @@ class App extends React.Component {
     console.log('w/ new')
     let context = this
     console.log('outside axios')
-    axios.get('http://ec2-13-57-253-90.us-west-1.compute.amazonaws.com:2112/' + endpoint + product)
+    axios.get(endpoint + product)
       .then(function (response) {
         console.log('RESPONSE FROM AXIOS GET FRONT END: ', response.data)
 

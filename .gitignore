@@ -4,3 +4,6 @@ seedMasterProductsList.sql
 seedDescriptions.sql
 awskey
 mainuser-key-pair-uswest.pem
+seedMoreData.csv
+seedMoreData.sql
+testCSV.csv
