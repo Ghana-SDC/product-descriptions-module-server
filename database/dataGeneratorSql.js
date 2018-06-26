@@ -2,7 +2,7 @@ const fs = require('fs');
 const faker = require('faker');
 const pg = require('pg');
 
-const dataGenerator = fs.createWriteStream('../testCSV.csv', {flags: 'a'});
+const dataGenerator = fs.createWriteStream('../seedMoreData.csv', {flags: 'a'});
 
 function dataprocess() {
   for (let i = 1 ; i <= 1; i++) {
@@ -16,7 +16,8 @@ function dataprocess() {
 
 const tenMillionData = (limit, callback) => {
   console.log('start ', new Date());
-
+//put in fs.truncate if you want to replace file on other file.
+  fs.truncate('../seedMoreData.csv', 0, function(){})
   const write = () => {
     let drained = true;
     do {

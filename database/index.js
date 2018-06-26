@@ -45,39 +45,29 @@
 // module.exports.MasterProductList = MasterProductList
 // module.exports.ProductDescription = ProductDescription
 
-/////////////MONGODB
+/////////////MONGODB/////////////////////////
 
 const MongoClient = require('mongodb').MongoClient;
+const { generateData } = require('./dataGeneratorMongo.js');
 
 MongoClient.connect('mongodb://localhost:27017/', function(err, client){
   if (err) {
     console.log('failed to connect to db ', err);
   }
+
+  client.db('description').dropDatabase();
   const db = client.db('description');
 
-  db.createCollection('productdescriptions', function(err, data){
+  db.createCollection('productdescriptions', (err, data) => {
     if (err) {
       console.log('failed to create productdescriptions collection', err);
     }
-    console.log('created collection');
+
+    generateData(db.collection('productdescriptions'), () => {
+      console.log('Closing database')
+      client.close()
+    })
   });
-  
-  const detailsEntry = { test: 'test' }
-  
-  db.collection('productdescriptions').insertOne(detailsEntry, function(err, data){
-    if (err) {
-      console.log('failed to add productdescriptions collection', err);
-    }
-    console.log('productdescriptions collection inserted');
-  })
-  
-  db.collection('productdescriptions').findOne({}, function(err, data) {
-    if (err) {
-      console.log('Failed to find one', err);
-    }
-    console.log('Data fetched from description collection:\n', data);
-  })
-  
 });
 
 module.exports = { MongoClient };
