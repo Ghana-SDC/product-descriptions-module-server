@@ -1,6 +1,6 @@
 FROM node:8.11
 
-WORKDIR /Users/kylemccarty/Desktop/gitTest/product-descriptions-FEC
+WORKDIR /sdc
 
 COPY package*.json ./
 

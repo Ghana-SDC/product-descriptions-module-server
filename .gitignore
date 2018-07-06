@@ -7,3 +7,10 @@ mainuser-key-pair-uswest.pem
 seedMoreData.csv
 seedMoreData.sql
 testCSV.csv
+my-ec2-key-pair.pem
+seedMoreData.csv.zip
+mongoSeed.csv.zip
+mongoSeed.csv
+newrelic.js
+newrelic_agent.log
+server/MongoDBindex.js

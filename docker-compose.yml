@@ -1,7 +1,7 @@
-dversion: "3"
+version: "3"
 services:
   descriptions:
-    image: kmmcc/product-descriptions:latest
+    image: sdc
     ports:
       - 2112:2112
     links:
@@ -12,15 +12,15 @@ services:
       - db
     environment:
       - DATABASE_URL=postgres://postgres:guest@db:5432/descriptions
-  db:
-    image: postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=guest
-      - POSTGRES_DB=descriptions
-volumes:
-  pgdata:
+  # db:
+  #   image: postgres
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=guest
+  #     - POSTGRES_DB=descriptions
+# volumes:
+#   pgdata:

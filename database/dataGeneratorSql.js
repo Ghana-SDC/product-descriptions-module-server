@@ -5,13 +5,13 @@ const pg = require('pg');
 const dataGenerator = fs.createWriteStream('../seedMoreData.csv', {flags: 'a'});
 
 function dataprocess() {
-  for (let i = 1 ; i <= 1; i++) {
+  // for (let i = 1 ; i <= 1; i++) {
   //generate ONE piece of fake data
   //let fakeData = {'id': 1, 'ProductTitle': FakerProductTitle(), }
     // return faker.lorem.sentence()+"'"+','+"'"+faker.company.companyName()+"'"+','+faker.commerce.price()+','+faker.commerce.price()+','+"'"+faker.random.boolean()+"'"+','+"'"+faker.company.catchPhrase()+"'"+','+"'"+faker.company.catchPhrase()+"'"
     // +','+"'"+faker.commerce.department()+"'"+''
-    return faker.name.firstName()+'%'+faker.company.companyName()+'%'+faker.commerce.price()+'%'+faker.commerce.price()+'%'+faker.random.boolean()+'%'+faker.company.catchPhrase()+'%'+faker.name.title()+'%'+faker.name.prefix();
-  } 
+    return faker.name.firstName()+'%'+faker.company.companyName()+'%'+Number(faker.commerce.price())+'%'+Number(faker.commerce.price())+'%'+faker.random.boolean()+'%'+faker.company.catchPhrase()+'%'+faker.name.title()+'%'+faker.name.prefix();
+  // } 
 }
 
 const tenMillionData = (limit, callback) => {
@@ -36,7 +36,7 @@ const tenMillionData = (limit, callback) => {
   write();
 };
 
-tenMillionData(10000000, (err) => {
+tenMillionData(10000001, (err) => {
   if (err) console.log('error in details generator', err);
   dataGenerator.end();
   console.log('closed: ', new Date());

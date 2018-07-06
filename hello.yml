@@ -1,0 +1,23 @@
+config:
+  target: 'http://localhost:2112'
+  http:
+    pool: 10
+  phases:
+    - duration: 60
+      arrivalRate: 50
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/api/description/id"
+      - get:
+          url: "/api/description/name/Peter"
+      count: 10
+      #   count: 10
+      # - post:
+      #     url: "/api/description/"
+    # - put:
+    #     url: "/api/description/Peter"
+      # - delete: 
+      #     url: "/api/description/id/0"
+      # count: 10

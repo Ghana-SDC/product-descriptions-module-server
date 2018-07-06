@@ -112,12 +112,12 @@ class App extends React.Component {
     super(props)
     this.state = {
       id: 0,
-      producttitle: '',
+      product_title: '',
       manufacturer: '',
-      listprice: 0,
-      ourprice: 0,
-      stockstatus: true,
-      soldby: '',
+      list_price: 0,
+      our_price: 0,
+      stock_status: true,
+      sold_by: '',
       description: '',
       category: ''
     }
@@ -132,11 +132,11 @@ class App extends React.Component {
 
   checkProductInput(product) {
     if (typeof product === 'string') {
-      let stringEndPoint = 'api/description/name/'
+      let stringEndPoint = "api/description/name/"
       this.fetchProductDescription(stringEndPoint, product)
     }
     if (typeof product === 'number') {
-      let numberEndPoint = 'api/description/id/'
+      let numberEndPoint = "api/description/id/"
       this.fetchProductDescription(numberEndPoint, product)
     }
   }
@@ -145,25 +145,26 @@ class App extends React.Component {
     console.log('w/ new')
     let context = this
     console.log('outside axios')
+    console.log('endpoint+product-', endpoint+product)
     axios.get(endpoint + product)
       .then(function (response) {
         console.log('RESPONSE FROM AXIOS GET FRONT END: ', response.data)
 
-        if (!response.data.ProductTitle) {
+        if (!response.data.product_title) {
           console.log('Returned no products')
         }
 
         let itemInfo = response.data
         context.setState({
           id: itemInfo.id,
-          producttitle: itemInfo.ProductTitle,
-          manufacturer: itemInfo.Manufacturer,
-          listprice: itemInfo.ListPrice,
-          ourprice: itemInfo.OurPrice,
-          stockstatus: itemInfo.StockStatus,
-          soldby: itemInfo.SoldBy,
-          description: itemInfo.Description,
-          category: itemInfo.Category
+          product_title: itemInfo.product_title,
+          manufacturer: itemInfo.manufacturer,
+          list_price: itemInfo.list_price,
+          our_price: Number(itemInfo.our_price),
+          stock_status: itemInfo.stock_status,
+          sold_by: itemInfo.sold_by,
+          description: itemInfo.description,
+          category: itemInfo.category
         })
       })
       .catch(function (error) {
@@ -179,12 +180,12 @@ class App extends React.Component {
           <div id='manufacturer-container'> {this.state.manufacturer} </div>
         </DescriptionLink>
         <Title> 
-          <span id='title-container'> {this.state.producttitle} </span>
+          <span id='title-container'> {this.state.product_title} </span>
         </Title>
         <LineBreak />
 
 
-          <div id='price-container'> <DescriptionText> Price: </DescriptionText> <RedPrice> ${(this.state.ourprice).toFixed(2)} </RedPrice> <span>   <Check><i class="fas fa-check"></i></Check></span><PrimeText>prime</PrimeText> </div>
+          <div id='price-container'> <DescriptionText> Price: </DescriptionText> <RedPrice> ${(this.state.our_price).toFixed(2)} </RedPrice> <span>   <Check><i class="fas fa-check"></i></Check></span><PrimeText>prime</PrimeText> </div>
             <div>
               <ShippingDescriptionText>
                 <DescriptionLink>FREE Shipping </DescriptionLink>on orders over $25 —or get <DescriptionTextBold>FREE Two-Day Shipping </DescriptionTextBold>with <DescriptionLink>Sequoia Prime</DescriptionLink>
@@ -192,11 +193,11 @@ class App extends React.Component {
             </div>
 
         <DescriptionText>
-          <StockStatus stockStatus={this.state.stockstatus}/>
+          <StockStatus stockstatus={this.state.stock_status}/>
         </DescriptionText>
 
         <MarginTopDescriptionText>
-          <div id='soldby-container'> Ships from and sold by {this.state.soldby}. Gift wrap available. </div>
+          <div id='soldby-container'> Ships from and sold by {this.state.sold_by}. Gift wrap available. </div>
         </MarginTopDescriptionText>
         <DescriptionTextBox>
           <div id='description-container'> {this.state.description} </div>
