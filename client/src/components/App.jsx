@@ -128,6 +128,7 @@ class App extends React.Component {
   componentDidMount() {
     let testValue = 1
     this.checkProductInput(testValue)
+    console.log('server 1')
   }
 
   checkProductInput(product) {
@@ -142,10 +143,10 @@ class App extends React.Component {
   }
 
   fetchProductDescription (endpoint, product) {
-    console.log('w/ new')
+    // console.log('w/ new')
     let context = this
-    console.log('outside axios')
-    console.log('endpoint+product-', endpoint+product)
+    // console.log('outside axios')
+    // console.log('endpoint+product-', endpoint+product)
     axios.get(endpoint + product)
       .then(function (response) {
         console.log('RESPONSE FROM AXIOS GET FRONT END: ', response.data)

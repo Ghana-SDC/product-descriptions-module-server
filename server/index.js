@@ -49,7 +49,7 @@ app.get('/api/description/id/:id', function(req, res) { //app.get('/api/descript
   console.log('req.params.id--', Number(req.params.id))
   db.ProductDescription.findOne({where: {id: req.params.id}}) //db.ProductDescription.findOne({where: {id: req.params.id}})
     .then(response => {
-      console.log('response-', response)
+      // console.log('response-', response)
       res.send(response)
     })
     .catch(err => console.log('err in server ID get', err))
